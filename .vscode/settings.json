@@ -7,5 +7,9 @@
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
+    },
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff"
     }
 }
