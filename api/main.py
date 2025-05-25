@@ -47,14 +47,15 @@ def images():
         # read images from database
         list_images = images_collection.find({})
         return jsonify([img for img in list_images])
+
     if request.method == "POST":
         # save image to the database
         image = request.get_json()
-        # SP : ObjectId can be converted to the string, no need to modify it
-        # image["_id"] = image.get("id")
+        # SP : ToDo: How to use ObjectId? It can be converted to the string but CORS appears in this case
+        image["_id"] = image.get("id")
         result = images_collection.insert_one(image)
         inserted_id = result.inserted_id
-        return {"inserted_id": str(inserted_id)}
+        return {"inserted_id": inserted_id}
 
 
 if __name__ == "__main__":
